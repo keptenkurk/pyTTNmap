@@ -32,7 +32,6 @@ while not lora.has_joined():
     time.sleep(0.2)
     pycom.rgbled(config.OFF)
     time.sleep(0.2)
-pycom.rgbled(config.BLUE)
 
 # create a LoRa socket
 s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
@@ -44,7 +43,7 @@ s.setblocking(False)
 s.bind(config.TTN_FPort)
 
 bestdx = 0
-flash_color = config.GREEN
+flash_color = config.BLUE
 
 while True:
     # start off with a garbaged collected memory
@@ -53,8 +52,8 @@ while True:
         flash_color = config.GREEN
     else:
         flash_color = config.BLUE
-    gps_array, speed = gps.get_loc()
-    if speed >= 0 and gps.has_fix():
+    gps_array, timestamp, valid = gps.get_loc()
+    if valid:
         # received valid output
         pycom.rgbled(config.PURPLE)
         try:
@@ -73,21 +72,17 @@ while True:
             distance = data[4] + 256 * data[3]
             if distance > bestdx:
                 bestdx = distance
-            disp.refresh_all(speed, packets, gateways, distance, bestdx)
+            disp.refresh_all(timestamp, packets, gateways, distance, bestdx)
         except socket.timeout:
             # nothing received
             if config.DEBUG:
                 print("No RX downlink data received")
-    if speed <= 5:
-        update = 27                  # lowest rate: update every 30 sec
-    if (speed > 5 and speed <= 25):  # cyling: update every 20 sec
-        update = 17
-    if speed > 25:                   # driving. update every 10 sec
-        update = 7
+    update = 7
     # flash led while waiting for next update
     for i in range(0, update):
-        gps_array, speed = gps.get_loc()
-        disp.refresh_speed(speed)
+        gps_array, timestamp, valid = gps.get_loc()
+        if valid:
+            disp.refresh_timestamp(timestamp)
         pycom.rgbled(flash_color)
         time.sleep(0.1)
         pycom.rgbled(config.OFF)

@@ -15,7 +15,7 @@ class GPS_data():
 
     def get_loc(self):
         coords = array.array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0])
-        speed = -1
+        valid = False
         sentence = ''
         # read buffer to last line
         while self.uart.any():
@@ -33,9 +33,9 @@ class GPS_data():
                 print('Altitude:', self.gps_dev.altitude)
                 print('Horizontal Dilution of Precision:', self.gps_dev.hdop)
                 print('Satellites in Use by Receiver:', self.gps_dev.satellites_in_use)
-                print('Speed in km/hour:', int(self.gps_dev.speed[2]))
             if self.has_fix:
-                speed = int(self.gps_dev.speed[2])
+                valid = True
+                timestamp = self.gps_dev.timestamp
                 lat = int((self.gps_dev.latitude[0] + (self.gps_dev.latitude[1]/60) + 90)*10000)
                 lon = int((self.gps_dev.longitude[0] + (self.gps_dev.longitude[1]/60) + 180)*10000)
                 alt = int((self.gps_dev.altitude) * 10)
@@ -50,7 +50,7 @@ class GPS_data():
                 coords[6] = alt
                 coords[7] = (alt >> 8)
                 coords[8] = lhdop
-        return coords, speed
+        return coords, timestamp, valid
 
     def has_fix(self):
         return (self.gps_dev.fix_stat > 0 and self.gps_dev.latitude[0] > 0)
