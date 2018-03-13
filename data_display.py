@@ -30,15 +30,16 @@ class DATA_display():
         self.distance = distance
         self.bestdx = bestdx
         if self.display.isConnected():
-            hh = self.timestamp[0]
-            mm = self.timestamp[1]
-            ss = self.timestamp[2]
+            self.hh = self.timestamp[0]
+            self.mm = self.timestamp[1]
+            self.ss = self.timestamp[2]
             self.display.set_contrast(config.CONTRAST)
             self.display.displayOn()
             self.display.clearBuffer()
             self.display.addString(0, 0, config.SIGNON)
             self.display.addString(0, 1, "--------------------")
-            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
+            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}"
+                                   .format(self.hh, self.mm, self.ss))
             self.display.addString(0, 3, "                    ")
             self.display.addString(0, 4, "Packets:       {:5d}".format(self.packets))
             self.display.addString(0, 5, "Gateways:        {:3d}".format(self.gateways))
@@ -49,9 +50,12 @@ class DATA_display():
             print("Error: LCD not found")
 
     def refresh_timestamp(self, timestamp):
-        self.timestamp = timestamp
+        self.hh = timestamp[0]
+        self.mm = timestamp[1]
+        self.ss = timestamp[2]
         if self.display.isConnected():
-            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
+            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}"
+                                   .format(self.hh, self.mm, self.ss))
             self.display.drawBuffer()
         else:
             print("Error: LCD not found")
