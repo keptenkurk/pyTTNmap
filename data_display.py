@@ -38,7 +38,7 @@ class DATA_display():
             self.display.clearBuffer()
             self.display.addString(0, 0, config.SIGNON)
             self.display.addString(0, 1, "--------------------")
-            self.display.addString(0, 2, "UTC Time: {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
+            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
             self.display.addString(0, 3, "                    ")
             self.display.addString(0, 4, "Packets:       {:5d}".format(self.packets))
             self.display.addString(0, 5, "Gateways:        {:3d}".format(self.gateways))
@@ -51,7 +51,7 @@ class DATA_display():
     def refresh_timestamp(self, timestamp):
         self.timestamp = timestamp
         if self.display.isConnected():
-            self.display.addString(0, 2, "UTC Time: {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
+            self.display.addString(0, 2, "UTC Time:   {:02d}:{:02d}:{:02.0f}".format(hh, mm, ss))
             self.display.drawBuffer()
         else:
             print("Error: LCD not found")
