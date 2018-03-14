@@ -15,6 +15,7 @@ class GPS_data():
 
     def get_loc(self):
         coords = array.array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0])
+        timestamp = (0, 0, 0)
         valid = False
         sentence = ''
         # read buffer to last line
