@@ -43,7 +43,7 @@ s.setblocking(False)
 s.bind(config.TTN_FPort)
 
 bestdx = 0
-valid = false
+valid = False
 flash_color = config.BLUE
 
 while True:

@@ -34,7 +34,7 @@ class GPS_data():
                 print('Altitude:', self.gps_dev.altitude)
                 print('Horizontal Dilution of Precision:', self.gps_dev.hdop)
                 print('Satellites in Use by Receiver:', self.gps_dev.satellites_in_use)
-            if self.has_fix:
+            if self.has_fix():
                 valid = True
                 timestamp = self.gps_dev.timestamp
                 lat = int((self.gps_dev.latitude[0] + (self.gps_dev.latitude[1]/60) + 90)*10000)
