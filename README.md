@@ -1,4 +1,4 @@
-# pyTTNmap: a TTN tracker for LoPy  v0.9.0
+# pyTTNmap: a TTN tracker for LoPy  v1.0.0
 Python code to track the location of a LoPy TTN node to TTNmapper
 
 # Blog info
