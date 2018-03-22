@@ -22,10 +22,11 @@ The Node-Red application also consumes the data and replies to the node the reco
 unique gateways which received a packet and the longest distance recorded in the entire session.
 This data is then displayed on the TTN tracker itself.
 
-#Following steps will be performed after reboot:
-1.Led falshes RED while waiting for WiFi (if configured)
-2.Display initializes at all "0"
-3.Led flashes YELLOW while waiting for OTAA registration on the LoRa network. Depending on nearby gateway availability this may take a while
-4.Led flashes BLUE while waiting for GPS fix. Depending on the skyview this might take a while.
-5.Led flashes GREEN. Yes! You're there. The location will be sent roughly every 10 seconds. While sending and waiting for a reply from the network the led will be PURPLE
-6.Received data will be shown on the display and the time should show the actual UTC time. During LoRa transmit/receive the time will stop for a few seconds.
+# Following steps will be performed after reboot:
+1. Led falshes RED while waiting for WiFi (if configured)
+2. Display initializes at all "0"
+3. Led flashes YELLOW while waiting for OTAA registration on the LoRa network. Depending on nearby gateway availability this may take a while
+4. Led flashes BLUE while waiting for GPS fix. Depending on the skyview this might take a while.
+5. Led flashes GREEN. Yes! You're there. The location will be sent roughly every 10 seconds. While sending and waiting for a reply from the network the led will be PURPLE
+6. Received data will be shown on the display and the time should show the actual UTC time. During LoRa transmit/receive the time will stop for a few seconds.
+
