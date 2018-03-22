@@ -23,7 +23,7 @@ unique gateways which received a packet and the longest distance recorded in the
 This data is then displayed on the TTN tracker itself.
 
 # Following steps will be performed after reboot:
-1. Led falshes RED while waiting for WiFi (if configured)
+1. Led flashes RED while waiting for WiFi (if configured)
 2. Display initializes at all "0"
 3. Led flashes YELLOW while waiting for OTAA registration on the LoRa network. Depending on nearby gateway availability this may take a while
 4. Led flashes BLUE while waiting for GPS fix. Depending on the skyview this might take a while.
