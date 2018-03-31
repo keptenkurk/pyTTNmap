@@ -151,12 +151,7 @@ class lopylcd:
         0x3C, 0x26, 0x23, 0x26, 0x3C]
 
     def isConnected(self):
-            # Check I2C devices
-            devices = self.i2c.scan()  # returns list of slave addresses
-            for d in devices:
-                if d == self.SSD1306_I2C_ADDRESS:
-                    return True
-            return False
+        return self.SSD1306_I2C_ADDRESS in self.i2c.scan()
 
     def command(self, *commandbytes):
         senddata = bytearray([0])
