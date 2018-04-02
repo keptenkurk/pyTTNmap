@@ -4,7 +4,7 @@ Python code to track the location of a LoPy TTN node to TTNmapper
 # Blog info
 https://keptenkurk.wordpress.com/2018/03/05/mapping-the-things-network-with-a-lopy-1/
 
-# Uses:
+# Uses: 
 * Pycom LoPy ver 1.17.0.b1 (not tested on LoPy4 or earlier firmwares)
 * Connected GPS VK2828U8G5LF
     Configured for NMEA GPGGA sentences only at a rate of 1/s

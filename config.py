@@ -22,8 +22,8 @@ APP_KEY = 'your APP_KEY'
 TTN_FPort = 1
 
 # GPS UART connection
-TX = "P11"
-RX = "P12"
+TX = "P3"
+RX = "P4"
 
 # Display I2C connection
 SDA = "P9"
