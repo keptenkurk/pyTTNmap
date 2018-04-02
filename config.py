@@ -31,7 +31,7 @@ SCL = "P8"
 # Display contrast (1..255)
 CONTRAST = 250
 # Display SIGNON message
-SIGNON = "TTN Tracker    1.0.0"
+SIGNON = "TTN Tracker    1.0.1"
 
 # Update interval
 UPDATE = 30
